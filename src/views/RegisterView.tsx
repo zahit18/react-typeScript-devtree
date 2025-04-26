@@ -57,7 +57,7 @@ export default function RegisterView() {
                             },
                         })}
                     />
-                    {errors.name && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
+                    {errors.email && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
                 </div>
                 <div className="grid grid-cols-1 space-y-3">
                     <label htmlFor="handle" className="text-2xl text-slate-500">Handle</label>
@@ -70,7 +70,7 @@ export default function RegisterView() {
                             required: 'El Handle es obligatorio'
                         })}
                     />
-                    {errors.name && <ErrorMessage>{errors.handle?.message}</ErrorMessage>}
+                    {errors.handle && <ErrorMessage>{errors.handle?.message}</ErrorMessage>}
                 </div>
                 <div className="grid grid-cols-1 space-y-3">
                     <label htmlFor="password" className="text-2xl text-slate-500">Password</label>
@@ -87,7 +87,7 @@ export default function RegisterView() {
                             }
                         })}
                     />
-                    {errors.name && <ErrorMessage>{errors.password?.message}</ErrorMessage>}
+                    {errors.password && <ErrorMessage>{errors.password?.message}</ErrorMessage>}
                 </div>
 
                 <div className="grid grid-cols-1 space-y-3">
@@ -102,7 +102,7 @@ export default function RegisterView() {
                             validate: (value) => value === password || 'Los Password deben ser iguales'
                         })}
                     />
-                    {errors.name && <ErrorMessage>{errors.password_confirmation?.message}</ErrorMessage>}
+                    {errors.password_confirmation && <ErrorMessage>{errors.password_confirmation?.message}</ErrorMessage>}
                 </div>
 
                 <input
