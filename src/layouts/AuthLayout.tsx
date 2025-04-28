@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
-import 'sonner/dist/styles.css';
 
 export default function AuthLayout() {
     return (
