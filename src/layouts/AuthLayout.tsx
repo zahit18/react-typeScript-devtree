@@ -16,7 +16,6 @@ export default function AuthLayout() {
             <Toaster 
                 position="top-right" 
                 richColors
-                closeButton
             />
         </>
     )
