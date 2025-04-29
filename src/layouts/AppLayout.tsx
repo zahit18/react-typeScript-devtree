@@ -12,8 +12,6 @@ export default function AppLayout() {
         refetchOnWindowFocus: false
     })
 
-    console.log(data)
-
     if(isLoading) return 'cargando...'
     if(isError) return <Navigate to={'/auth/login'} />
     if(data) return <DevTree data={data} />
