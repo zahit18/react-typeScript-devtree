@@ -2,7 +2,7 @@ import { DevTreeLink } from "../types";
 
 export const social: DevTreeLink[] = [
     { name: 'facebook', url: '', enabled: false },
-    { name: 'github', url: '', enabled: true },
+    { name: 'github', url: '', enabled: false },
     { name: 'instagram', url: '', enabled: false },
     { name: 'x', url: '', enabled: false },
     { name: 'youtube', url: '', enabled: false },

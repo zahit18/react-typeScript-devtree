@@ -44,7 +44,10 @@ export default function ProfileView() {
     })
     
     const handleProfileForm = async (formData: ProfileForm) => {
-        updateProfileMutation.mutate(formData)
+        const user: User = queryClient.getQueryData(['user'])!
+        user.description = formData.description
+        user.handle = formData.handle
+        updateProfileMutation.mutate(user)
     }
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
