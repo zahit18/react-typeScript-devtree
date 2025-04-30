@@ -1,28 +1,61 @@
 import { useForm } from 'react-hook-form'
-import { useQueryClient } from '@tanstack/react-query'
+import { useQueryClient, useMutation } from '@tanstack/react-query'
 
 import { ProfileForm, User } from '../types/index'
 import ErrorMessage from '../components/ErrorMessage'
+import { updateProfile, uploadImage } from '../api/DevTreeAPI'
+import { toast } from 'sonner'
 
 export default function ProfileView() {
     const queryClient = useQueryClient()
     const data: User = queryClient.getQueryData(['user'])!
-
-    console.log(data)
 
     const InitialValues: ProfileForm = {
         handle: data.handle,
         description: data.description
     }
 
-    const { register, handleSubmit ,formState: {errors}} = useForm({defaultValues: InitialValues})
+    const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: InitialValues })
 
+    const updateProfileMutation = useMutation({
+        mutationFn: updateProfile,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (data) => {
+            toast.success(data)
+            queryClient.invalidateQueries({ queryKey: ['user'] })
+        }
+    })
+    
+    const uploadImageMutation = useMutation({
+        mutationFn: uploadImage,
+        onError: (error) => {
+            toast(error.message)
+        },
+        onSuccess: (data) => {
+            queryClient.setQueryData(['user'], (prevData: User) => {
+                return {
+                    ...prevData,
+                    image: data.image
+                }
+            })
+        }
+    })
+    
     const handleProfileForm = async (formData: ProfileForm) => {
-        console.log(formData)
+        updateProfileMutation.mutate(formData)
+    }
+
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            uploadImageMutation.mutate(e.target.files[0])
+
+        }
     }
 
     return (
-        <form 
+        <form
             className="bg-white p-10 rounded-lg space-y-5"
             onSubmit={handleSubmit(handleProfileForm)}
         >
@@ -63,7 +96,7 @@ export default function ProfileView() {
                     name="handle"
                     className="border-none bg-slate-100 rounded-lg p-2"
                     accept="image/*"
-                    onChange={ () => {} }
+                    onChange={handleChange}
                 />
             </div>
 
