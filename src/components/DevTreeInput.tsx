@@ -18,6 +18,7 @@ export default function DevTreeInput({ item, handleUrlChange, handleEnabledLink 
       <input
         type="text"
         className='flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none'
+        placeholder={`https://${item.name}/user`}
         value={item.url}
         onChange={handleUrlChange}
         name={item.name}
