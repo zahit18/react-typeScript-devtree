@@ -18,9 +18,6 @@ export default function HandleView() {
 
     if(data) return <HandleData data={data}/>
 
-    console.log(data)
-    console.log(isLoading)
-    console.log(error)
   return (
     <div>HandleView</div>
   )
