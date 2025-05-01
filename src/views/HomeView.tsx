@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import SearchForm from "../components/SearchForm";
 
 export default function HomeView() {
     return (
@@ -12,6 +13,8 @@ export default function HomeView() {
                         </h1>
 
                         <p className="text-slate-800 text-xl">Unete a mas de 200 mil developers compattiendo sus redes sociales, comparte tu perfil de TikTok, Facebool, Instagram, YouTube, GitHub y mas</p>
+
+                        <SearchForm />
                     </div>
 
                 </div>
